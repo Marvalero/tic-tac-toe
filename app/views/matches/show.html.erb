@@ -1,5 +1,22 @@
 <h1>Tic tac toe</h1>
 
 
-<h1>Game</h1>
+<h2>Game <%= @match.name %></h2>
 
+<table style="width:100%">
+  <tr>
+    <th><%= @match.board[0] %></th>
+    <th><%= @match.board[1] %></th>
+    <th><%= @match.board[2] %></th>
+  </tr>
+  <tr>
+    <th><%= @match.board[3] %></th>
+    <th><%= @match.board[4] %></th>
+    <th><%= @match.board[5] %></th>
+  </tr>
+  <tr>
+    <th><%= @match.board[6] %></th>
+    <th><%= @match.board[7] %></th>
+    <th><%= @match.board[8] %></th>
+  </tr>
+</table>
