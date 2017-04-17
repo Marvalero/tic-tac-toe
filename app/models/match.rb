@@ -1,16 +1,20 @@
 class Match < ApplicationRecord
   before_save :generate_default_values
-  before_save :serialize_board
+
+  def board
+    @board ||= self.serialized_board && self.serialized_board.split(',').map(&:to_i)
+  end
+
+  def board=(value)
+    self.serialized_board = value.join(',')
+    @board = value
+  end
 
   private
 
   def generate_default_values
     generate_uuid
     generate_board
-  end
-
-  def serialize_board
-    self.board = self.board.join(',')
   end
 
   def generate_uuid
@@ -21,11 +25,5 @@ class Match < ApplicationRecord
   def generate_board
     return if board
     self.board = [0,0,0,0,0,0,0,0,0]
-  end
-
-  def board
-  end
-
-  def board=(value)
   end
 end
