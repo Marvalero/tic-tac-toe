@@ -1,2 +1,28 @@
-<h2>Tic tac toe</h2>
+<h1>Tic tac toe</h1>
 
+
+<h1>Created Matches</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Created at</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @matches.each do |match| %>
+  <tr>
+    <td><%= match.name %></td>
+    <td><%= match.created_at %></td>
+    <td><%= link_to "Show", match %></td>
+    <td><%= link_to "Remove", match, method: :delete, data: { confirm: "Are you sure?" } %></td>
+  </tr>
+<% end %>
+</table>
+
+<form accept-charset="UTF-8" action="/matches" method="post">
+  <input id="name" name="name" type="name" />
+  <input name="commit" type="submit" value="Create" />
+</form>
