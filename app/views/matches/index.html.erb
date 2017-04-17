@@ -16,7 +16,7 @@
   <tr>
     <td><%= matchh.name %></td>
     <td><%= matchh.created_at %></td>
-    <td><%= link_to "Show", match_path(matchh.uuid), method: :get  %></td>
+    <td><%= link_to "Play", match_path(matchh.uuid), method: :get  %></td>
     <td><%= link_to "Remove", match_path(matchh.uuid), method: :delete, data: { confirm: "Are you sure?" } %></td>
   </tr>
 <% end %>

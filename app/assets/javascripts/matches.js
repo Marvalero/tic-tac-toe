@@ -16,23 +16,28 @@
 //= require_tree .
 $(() => {
   $('.square').on('click' , function () {
-    const matchUuid = $(this).data('match-uuid');
-    const squarePosition = $(this).data('position');
-    const data = JSON.stringify({ square_position: squarePosition });
+    const matchFinished = $(this).data('finished');
+    if(matchFinished == true) {
+      alert("Game is finished")
+    } else {
+      const matchUuid = $(this).data('match-uuid');
+      const squarePosition = $(this).data('position');
+      const data = JSON.stringify({ square_position: squarePosition });
 
-    $.ajax({
-      url: '/matches/' + matchUuid,
-      type: 'PUT',
-      dataType: 'json',
-      contentType: 'application/json',
-      data: data,
-      processData: false,
-      success: () => { location.reload(); },
-      error: () => {
-        console.error('boom')
-      }
-    });
+      $.ajax({
+        url: '/matches/' + matchUuid,
+        type: 'PUT',
+        dataType: 'json',
+        contentType: 'application/json',
+        data: data,
+        processData: false,
+        success: () => { location.reload(); },
+        error: () => {
+          console.error('boom')
+        }
+      });
 
-    return false;
+      return false;      
+    }
   });
 });

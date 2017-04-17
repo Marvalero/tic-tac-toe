@@ -1,22 +1,25 @@
 <h1>Tic tac toe</h1>
 
-
+<%= link_to "Back", matches_path %>
 <h2>Game <%= @match.name %></h2>
 
 <table style="width:100%">
   <tr>
     <th class="top-left square"
         data-position="0"
+        data-finished=<%= @match.finished %>
         data-match-uuid=<%= @match.uuid %>>
         <%= (Match::PLAYER == @match.board[0] && "X") || (Match::COMPUTER == @match.board[0] && "O") || nil %>
     </th>
     <th class="top-center square"
         data-position="1"
+        data-finished=<%= @match.finished %>
         data-match-uuid=<%= @match.uuid %>>
         <%=  (Match::PLAYER == @match.board[1] && "X") || (Match::COMPUTER == @match.board[1] && "O") || nil %>
     </th>
     <th class="top-right square"
         data-position="2"
+        data-finished=<%= @match.finished %>
         data-match-uuid=<%= @match.uuid %>>
         <%=  (Match::PLAYER == @match.board[2] && "X") || (Match::COMPUTER == @match.board[2] && "O") || nil %>
     </th>
@@ -25,16 +28,19 @@
   <tr>
     <th class="midle-left square"
         data-position="3"
+        data-finished=<%= @match.finished %>
         data-match-uuid=<%= @match.uuid %>>
         <%=  (Match::PLAYER == @match.board[3] && "X") || (Match::COMPUTER == @match.board[3] && "O") || nil %>
     </th>
     <th class="midle-center square"
         data-position="4"
+        data-finished=<%= @match.finished %>
         data-match-uuid=<%= @match.uuid %>>
         <%=  (Match::PLAYER == @match.board[4] && "X") || (Match::COMPUTER == @match.board[4] && "O") || nil %>
     </th>
     <th class="midle-right square"
         data-position="5"
+        data-finished=<%= @match.finished %>
         data-match-uuid=<%= @match.uuid %>>
         <%=  (Match::PLAYER == @match.board[5] && "X") || (Match::COMPUTER == @match.board[5] && "O") || nil %>
     </th>
@@ -43,16 +49,19 @@
   <tr>
     <th class="bottom-left square"
         data-position="6"
+        data-finished=<%= @match.finished %>
         data-match-uuid=<%= @match.uuid %>>
         <%=  (Match::PLAYER == @match.board[6] && "X") || (Match::COMPUTER == @match.board[6] && "O") || nil %>
     </th>
     <th class="bottom-center square"
         data-position="7"
+        data-finished=<%= @match.finished %>
         data-match-uuid=<%= @match.uuid %>>
         <%=  (Match::PLAYER == @match.board[7] && "X") || (Match::COMPUTER == @match.board[7] && "O") || nil %>
     </th>
     <th class="bottom-right square"
         data-position="8"
+        data-finished=<%= @match.finished %>
         data-match-uuid=<%= @match.uuid %>>
         <%=  (Match::PLAYER == @match.board[8] && "X") || (Match::COMPUTER == @match.board[8] && "O") || nil %>
     </th>
