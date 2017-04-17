@@ -1,24 +1,25 @@
 # tic-tac-toe
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Rails app. Run it:
 
-Things you may want to cover:
+```
+# Start database:
+docker-compose up
 
-* Ruby version
+# Run migrations
+rails db:create
+rails db:migrate
 
-* System dependencies
+# fetch gems
+bundle
 
-* Configuration
+# start server
+rails s
+```
 
-* Database creation
+Run tests:
 
-* Database initialization
+```
+bundle exec rspec
+```
 
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
