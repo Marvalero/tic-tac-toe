@@ -2,6 +2,9 @@ class Match < ApplicationRecord
   self.primary_key = 'uuid'
   before_save :generate_default_values
 
+  PLAYER = 1.freeze
+  COMPUTER = 5.freeze
+
   def board
     @board ||= self.serialized_board && self.serialized_board.split(',').map(&:to_i)
   end

@@ -14,3 +14,25 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require_tree .
+$(() => {
+  $('.square').click(function () {
+    const matchUuid = $(this).data('match-uuid');
+    const squarePosition = $(this).data('position');
+    const data = JSON.stringify({ square_position: squarePosition });
+
+    $.ajax({
+      url: '/matches/' + matchUuid,
+      type: 'PUT',
+      dataType: 'json',
+      contentType: 'application/json',
+      data: data,
+      processData: false,
+      success: () => { location.reload(); },
+      error: () => {
+        console.error('boom')
+      }
+    });
+
+    return false;
+  });
+});
