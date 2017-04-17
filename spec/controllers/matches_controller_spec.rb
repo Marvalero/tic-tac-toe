@@ -112,5 +112,12 @@ RSpec.describe MatchesController do
       my_match = Match.find_by(uuid: match.uuid)
       expect(my_match.board.reduce(&:+)).to eq(6)
     end
+
+    it 'does not calculates the match response if same position' do
+      do_request
+      do_request
+      my_match = Match.find_by(uuid: match.uuid)
+      expect(my_match.board.reduce(&:+)).to eq(6)
+    end
   end
 end

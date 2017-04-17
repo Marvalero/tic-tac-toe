@@ -1,6 +1,8 @@
 class GameHandler
   class << self
     def calculate_board_status(match:, position:)
+      return match if match.board[position] != Match::EMPTY
+
       match.tap do |m|
         m.player_moves_to_position(position)
         calculate_response(match)

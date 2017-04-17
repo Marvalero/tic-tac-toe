@@ -4,6 +4,7 @@ class Match < ApplicationRecord
 
   PLAYER = 1.freeze
   COMPUTER = 5.freeze
+  EMPTY = 0.freeze
 
   def board
     @board ||= self.serialized_board && self.serialized_board.split(',').map(&:to_i)
