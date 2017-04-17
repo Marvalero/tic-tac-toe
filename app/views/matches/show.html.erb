@@ -11,11 +11,13 @@
         <%= (Match::PLAYER == @match.board[0] && "X") || (Match::COMPUTER == @match.board[0] && "O") || nil %>
     </th>
     <th class="top-center square"
-        data-position="1">
+        data-position="1"
+        data-match-uuid=<%= @match.uuid %>>
         <%=  (Match::PLAYER == @match.board[1] && "X") || (Match::COMPUTER == @match.board[1] && "O") || nil %>
     </th>
     <th class="top-right square"
-        data-position="2">
+        data-position="2"
+        data-match-uuid=<%= @match.uuid %>>
         <%=  (Match::PLAYER == @match.board[2] && "X") || (Match::COMPUTER == @match.board[2] && "O") || nil %>
     </th>
   </tr>

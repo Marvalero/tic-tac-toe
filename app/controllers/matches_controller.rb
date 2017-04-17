@@ -20,6 +20,11 @@ class MatchesController < ApplicationController
   end
 
   def update
+    match = Match.find_by(uuid: params[:uuid])
+    match = GameHandler.calculate_board_status(match: match,
+      position: params[:square_position].to_i)
+
+    match.save!
     respond_to do |format|
       format.html { redirect_to match_path }
       format.json { render json: {} }

@@ -109,8 +109,8 @@ RSpec.describe MatchesController do
 
     it 'calculates the match response' do
       do_request
-      match.reload
-      expect(match.board.reduce(&:+)).to eq(6)
+      my_match = Match.find_by(uuid: match.uuid)
+      expect(my_match.board.reduce(&:+)).to eq(6)
     end
   end
 end

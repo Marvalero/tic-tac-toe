@@ -14,6 +14,24 @@ class Match < ApplicationRecord
     @board = value
   end
 
+  def player_moves_to_position(position)
+    return unless position
+    current_board = self.board
+    current_board[position] = Match::PLAYER
+    self.board = current_board
+  end
+
+  def computer_moves_to_position(position)
+    return unless position
+    current_board = self.board
+    current_board[position] = Match::COMPUTER
+    self.board = current_board
+  end
+
+  def free_position?
+    board.sum < (COMPUTER*4 + 5*PLAYER)
+  end
+
   private
 
   def generate_default_values
