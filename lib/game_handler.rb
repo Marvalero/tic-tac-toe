@@ -2,11 +2,11 @@ class GameHandler
   class << self
     TAKEN_POSITION_SCORE = -100.freeze
     COMPUTER_CAN_WIN_SCORE = 30.freeze
-    COMPUTER_ON_SAME_LINE_SCORE = 1.freeze
+    COMPUTER_ON_SAME_LINE_SCORE = 2.freeze
 
-    PLAYER_CAN_WIN_SCORE = 5.freeze
-    PLAYER_ON_SAME_LINE_SCORE = -1.freeze
-    NORMAL_POSITION_SCORE = 0.freeze
+    PLAYER_CAN_WIN_SCORE = 10.freeze
+    PLAYER_ON_SAME_LINE_SCORE = 0.freeze
+    NORMAL_POSITION_SCORE = 1.freeze
 
     def calculate_board_status(match:, position:)
       return match if match.board[position] != Match::EMPTY
@@ -23,7 +23,7 @@ class GameHandler
       return if match.finished || !match.free_position?
       position_scores = calculate_computer_values_for_positions(match)
       position = position_scores.each_with_index.max[1]
-      match.finished = true if position_scores[position] > 20
+      match.finished = true if position_scores[position] >= 30
 
       match.computer_moves_to_position(position)
     end
