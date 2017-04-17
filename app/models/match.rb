@@ -1,4 +1,5 @@
 class Match < ApplicationRecord
+  self.primary_key = 'uuid'
   before_save :generate_default_values
 
   def board
