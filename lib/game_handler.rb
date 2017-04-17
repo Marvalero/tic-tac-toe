@@ -1,5 +1,13 @@
 class GameHandler
   class << self
+    TAKEN_POSITION_SCORE = -100.freeze
+    COMPUTER_CAN_WIN_SCORE = 30.freeze
+    COMPUTER_ON_SAME_LINE_SCORE = 1.freeze
+
+    PLAYER_CAN_WIN_SCORE = 5.freeze
+    PLAYER_ON_SAME_LINE_SCORE = -1.freeze
+    NORMAL_POSITION_SCORE = 0.freeze
+
     def calculate_board_status(match:, position:)
       return match if match.board[position] != Match::EMPTY
 
@@ -32,7 +40,7 @@ class GameHandler
     def ocupated_score(values_for_positions, board)
       board.each_with_index do |square, position|
         if square != 0
-          values_for_positions[position] = -100
+          values_for_positions[position] = TAKEN_POSITION_SCORE
         end
       end
     end
@@ -60,16 +68,16 @@ class GameHandler
     end
 
     def line_rate(line)
-      if line.sum == 10
-        30
-      elsif line.sum == 2
-        5
-      elsif line.sum == 5
-        1
-      elsif line.include?(1)
-        -1
+      if line.sum == Match::COMPUTER*2
+        COMPUTER_CAN_WIN_SCORE
+      elsif line.sum == Match::PLAYER*2
+        PLAYER_CAN_WIN_SCORE
+      elsif line.sum == Match::COMPUTER
+        COMPUTER_ON_SAME_LINE_SCORE
+      elsif line.include?(Match::PLAYER)
+        PLAYER_ON_SAME_LINE_SCORE
       else
-        0
+        NORMAL_POSITION_SCORE
       end 
     end
   end
