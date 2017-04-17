@@ -21,9 +21,14 @@ RSpec.describe MatchesController do
       get :create, params
     end
 
-    it 'returns 201' do
+    it 'returns 302' do
       do_request
-      expect(response.status).to eq(201)
+      expect(response.status).to eq(302)
+    end
+
+    it 'returns redirection header with path to new match' do
+      do_request
+      expect(response.headers['Location']).to match(/http:\/\/test\.host\/matches\/.*-.*-.*-.*-.*/)
     end
 
     it 'creates the match' do
