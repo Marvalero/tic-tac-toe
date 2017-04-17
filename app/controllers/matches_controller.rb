@@ -19,6 +19,13 @@ class MatchesController < ApplicationController
     end
   end
 
+  def update
+    respond_to do |format|
+      format.html { redirect_to match_path }
+      format.json { render json: {} }
+    end
+  end
+
   def destroy
     @match = Match.find_by(uuid: params[:uuid])
     @match.destroy

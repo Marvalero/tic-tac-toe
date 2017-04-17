@@ -88,4 +88,29 @@ RSpec.describe MatchesController do
       expect(my_match).to eq(nil)
     end
   end
+
+  context '#update' do
+    let(:match) { Match.create(name: 'Wonderful Match') }
+    let(:params) { { uuid: match.uuid, square_position: "0" } }
+
+    def do_request
+      get :update, params: params
+    end
+
+    it 'returns 302' do
+      do_request
+      expect(response.status).to eq(302)
+    end
+
+    it 'returns redirection header with path to new match' do
+      do_request
+      expect(response.headers['Location']).to eq("http://test.host/matches/#{match.uuid}")
+    end
+
+    it 'calculates the match response' do
+      do_request
+      match.reload
+      expect(match.board.reduce(&:+)).to eq(6)
+    end
+  end
 end
